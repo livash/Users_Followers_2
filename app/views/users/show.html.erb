@@ -1,0 +1,22 @@
+<h1>Welcome <%= @user.name.capitalize %></h1>
+<b>Users who are followed by you are :</b>
+<ul>
+	<% @followed_users.each do |user| %>
+	<li><%= user.name.capitalize %></li>
+	<% end %>
+</ul>
+<br>
+<br>
+<b>Your followers are:</b>
+<ul>
+	<% @followers.each do |user| %>
+	<li><%= user.name.capitalize %></li>
+	<% end %>
+</ul>
+<br>
+<br>
+
+<%= link_to "See all the users in the database", followings_url, :method => :get %>
+<br>
+<br>
+<%= link_to "Logout", session_url(@user), :method => :delete %>

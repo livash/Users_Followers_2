@@ -1,0 +1,17 @@
+<h1>Here are all users found in the database</h1>
+<table>
+	<% @users.each do |user| %>
+	<% next if user == @user %>
+	<tr>
+		<td><%= user.name.capitalize %></td>
+		<% if @followed_users.include?(user) %>
+		<td><%= link_to "  UNFOLLOW  ", user_followings_url(user), :method => :delete %></td>
+		<% else %>
+		<td><%= link_to "  FOLLOW  ", user_followings_url(user), :method => :post %></td>
+		<% end %>
+	</tr>
+	<% end %>
+</table>
+<br>
+<br>
+<%= link_to "Logout", session_url(@user), :method => :delete %>
